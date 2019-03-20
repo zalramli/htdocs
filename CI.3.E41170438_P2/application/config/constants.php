@@ -48,6 +48,8 @@ defined('FOPEN_READ_WRITE_CREATE')              or define('FOPEN_READ_WRITE_CREA
 defined('FOPEN_WRITE_CREATE_STRICT')            or define('FOPEN_WRITE_CREATE_STRICT', 'xb');
 defined('FOPEN_READ_WRITE_CREATE_STRICT')       or define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
 
+define('SITE_NAME', 'JASA LAYANAN');
+
 /*
 |--------------------------------------------------------------------------
 | Exit Status Codes
@@ -83,4 +85,3 @@ defined('EXIT_USER_INPUT')     or define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       or define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      or define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      or define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
-//defined('SITE_NAME', 'belajar_web');

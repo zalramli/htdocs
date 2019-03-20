@@ -1,47 +1,81 @@
-<?php 
+<?php
+
 class Barang_model extends CI_Model
 {
-    private $_table = "barang";
-    public $kode_barang;
-    public $nama_barang;
-    public $deskripsi_barang;
-    public $stok_barang;
-    public $harga_barang;
+    //menampung nama tabel di database
+    private $_table = "tbl_barang";
 
-    public function getBarang()
+    public $kodeBarang;
+    public $namaBarang;
+    public $deskripsiBarang;
+    public $stokBarang;
+    public $hargaBarang;
+
+    // public function rules()
+    // {
+    //     return [
+    //         [
+    //             'field' => 'name',
+    //             'Label' => 'Name',
+    //             'rules' => 'required'
+    //         ],
+    //         [
+    //             'field' => 'price',
+    //             'label' => 'Price',
+    //             'rules' => 'numeric'
+    //         ],
+    //         [
+    //             'field' => 'description',
+    //             'label' => 'Description',
+    //             'rules' => 'required'
+    //         ]
+    //     ];
+    // }
+
+    //untuk mengambil data keseluruhan dari tabel barang
+    public function getAll()
     {
         return $this->db->get($this->_table)->result();
     }
 
-    public function getById($kode)
+    //untuk ambil data per baris berdasarkan ID barang 
+    public function getById($kode_barang)
     {
-        return $this->db->get_where($this->_table, ['kode_barang' => $kode])->row();
+        return $this->db->get_where($this->_table, ["kodeBarang" => $kode_barang])->row();
     }
 
+    // untuk menyimpan data ke database
     public function save()
     {
         $post = $this->input->post();
-        $this->kode_barang = uniqid();
-        $this->nama_barang = $post['nama_barang'];
-        $this->deskripsi_barang = $post['deskripsi_barang'];
-        $this->stok_barang = $post['stok_barang'];
-        $this->harga_barang = $post['harga_barang'];
+        //
+
+        //$this->kodeBarang = $post['kodeBarang'];
+
+        $this->kodeBarang = uniqid();
+        $this->namaBarang = $post['namaBarang'];
+        $this->deskripsiBarang = $post['deskripsiBarang'];
+        $this->stokBarang = $post['stokBarang'];
+        $this->hargaBarang = $post['hargaBarang'];
         $this->db->insert($this->_table, $this);
     }
 
+    // untuk edit data di database
     public function edit($kode)
     {
         $post = $this->input->post();
-        $this->kode_barang = $_post['kode_barang'];
-        $this->nama_barang = $post['nama_barang'];
-        $this->deskripsi_barang = $post['deskripsi_barang'];
-        $this->stok_barang = $post['stok_barang'];
-        $this->harga_barang = $post['harga_barang'];
-        $this->db->update($this->_table, $this, ['kode_barang' => $kode]);
+        //
+        $this->kodeBarang = $post['kodeBarang'];
+        $this->namaBarang = $post['namaBarang'];
+        $this->deskripsiBarang = $post['deskripsiBarang'];
+        $this->stokBarang = $post['stokBarang'];
+        $this->hargaBarang = $post['hargaBarang'];
+        $this->db->update($this->_table, $this, array('kode_barang' => $post['kodeBarang']));
     }
 
-    public function delete($kode)
+    // untuk hapus data di database
+    public function hapus()
     {
-        $this->db->delete($this->_table, $this, ['kode_barang' => $kode]);
+        //
     }
 }
